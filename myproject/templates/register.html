@@ -1,0 +1,99 @@
+{%extends 'base.html'%}
+{%block title%}Registration {%endblock%}
+{% block body %}
+<script>
+  function checkEmail(emailid)
+  {
+    var xhttp=new XMLHttpRequest()
+    xhttp.open("GET","http://127.0.0.1:8000/checkEmail/?emailid="+emailid,true)
+    xhttp.send()
+
+    xhttp.onreadystatechange=function(){
+      if(xhttp.readyState==4 && xhttp.status==200)
+      {
+        var msg
+        if(parseInt(xhttp.responseText))
+            msg="<font color='red'>Email Id Already Exists</font>"
+        else
+            msg="<font color='green'>Email Id Available</font>"
+        document.getElementById("response").innerHTML=msg
+      }
+    }
+  }
+  </script>
+<div class="container">
+<div class="col-sm-12 mt-2" style="padding-top:100px;">
+<!--messeage pop up-->
+ {% if messages %}
+ {% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+   <strong>{{ message }}</strong>
+ <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+   <span aria-hidden="true">&times;</span>
+ </button>
+</div>
+ {%endfor%}
+ {% endif %}
+<!--messeage pop up-->
+<br>
+<h1 style="font-weight:bold;font-size:40px;">Register Here!!!</h1>
+<!-- <font color="red;">{{output}}</font> -->
+
+<br>
+<form method="post" action="/register/" >
+{% csrf_token %}    
+<table class="table table-bordered">
+<tr>
+    <td>Name</td>
+    <td><input type="text" name="name" placeholder="Enter name" class="form-control"/></td>
+</tr>
+<tr>
+    <td>Username</td>
+    <td><input onkeyup="checkEmail(this.value)" type="text" name="username" placeholder="Enter username" class="form-control">
+    <br>
+        <span id="response"></span>
+    </td>
+</tr>
+
+<tr>
+    <td>Password</td>
+    <td><input type="password" name="password" placeholder="Enter password" class="form-control"/></td>
+</tr>    
+<tr>
+    <td>Mobile</td>
+    <td><input type="tel" name="mobile" placeholder="Enter mobile" class="form-control"/></td>
+</tr>
+<tr>
+    <td>Address</td>
+    <td><textarea rows="2" name="address" placeholder="Enter address" class="form-control"></textarea></td>
+</tr>
+<tr>
+    <td>City</td>
+    <td>
+        <select name="city" class="form-control">
+            <option>Select City</option>
+            <option>Indore</option>
+            <option>Ujjain</option>
+            <option>Bhopal</option>
+        </select>    
+    </td>
+</tr>
+<tr>
+    <td>Gender</td>
+    <td>
+        Male <input type="radio" name="gender"  value="male" />
+        &nbsp;&nbsp;
+        Female <input type="radio" name="gender"  value="female" />
+    </td>
+</tr>
+<tr>
+    <td colspan="2"  ><button style="margin:0px 200px; padding:5px 300px;" type="submit" class="btn btn-outline-danger"><strong>Register</strong></button></td>
+
+</tr>
+
+</table>
+</form>
+
+</div>
+</div>	
+{% endblock %}

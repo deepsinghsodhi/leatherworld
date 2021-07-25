@@ -1,0 +1,95 @@
+{%extends 'userhome.html'%}
+{%load static%}
+
+{% block css %}<style>
+
+a{
+    text-decoration: underline;
+    font-size: large;
+    color: black;
+}
+a:hover{
+   color: red;
+}
+#category-main{
+   height: 600px;
+   width: 900px;
+}
+.category-part{
+   height: 200px;
+   width: 300px;
+   float: left;
+}
+
+
+</style>
+{%endblock%}
+{%block header%}
+<div class="col-sm-3">
+   <h3 id="logo" class="logo" >Leather World</h3>
+</div>
+<div class="col-sm-7">
+
+<nav class="navbar navbar-expand-lg navbar-dark top-nav">
+<!-- <div class="container"> -->
+   <a class="navbar-brand" href="index.html">
+
+<!--                <img src="{%static 'images/45.jpg'%}" alt="logo" class="ml-5 mt-0">-->
+
+   </a>
+   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="fas fa-bars"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarResponsive" style="padding-right: 189px;">
+      <!-- <font style="color:white">Username:{{suname}}</font>  -->
+      <a class="nav-link " style="color:white" href="/users/">Hello:{{suname}}</a>
+      <ul class="navbar-nav ml-auto">
+         <li class="nav-item">
+            <!-- <a class="nav-link " href="/users/">User Home</a> -->
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" href="/users/vdeals/">Shop</a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" href="/login/">Logout</a>
+         </li>
+      </div>
+   </nav>
+   {%endblock%}
+{% block body %}
+<div class="col-sm-12">
+    <h1 style="font-size:40px;font-weight:bold;padding-top: 120px;">Change Password Here..!!</h1>
+              <!--messeage pop up-->
+ {% if messages %}
+ {% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+   <strong>{{ message }}</strong>
+ <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+   <span aria-hidden="true">&times;</span>
+ </button>
+</div>
+ {%endfor%}
+ {% endif %}
+<!--messeage pop up-->
+
+    <form method="POST" action="">
+        {% csrf_token %}
+          <div class="mb-3">
+            <label   class="form-label mt-5">Old Password</label>
+            <input type="password" name="opass" class="form-control" placeholder="Enter old password Here">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">New Password</label>
+            <input type="password" name="npass" class="form-control" placeholder="Enter New Password here">
+          </div>
+          <div class="mb-3">
+            <input type="password" name="cnpass" class="form-control" placeholder="Enter New Password Again">
+          </div>
+          <!-- <font >{{output}}</font> -->
+          <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+          <button style="margin:0px 200px; padding:5px 300px;" type="submit" class="btn btn-outline-danger mb-2"><strong>Change Password</strong></button>
+          
+      
+        </form>
+</div>
+{%endblock%}

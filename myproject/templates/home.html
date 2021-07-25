@@ -1,0 +1,215 @@
+{%extends 'base.html'%}
+{% load static %}
+{%block title%}Home {%endblock%}
+{% block css %} <style> 
+.food-container{
+    display: flex;
+    justify-content:space-between;
+}
+.food-container img{
+    display: block;
+    width: 100% ;
+    margin: auto;
+    height:250px;
+    max-height: 250px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.img-container{
+    margin: 0 1rem;
+    position: relative;
+}
+.img-content {
+    text-align: center;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+    z-index: 2;
+    transition: all 0.1s ease-in;
+}
+.img-container:hover .img-content{
+    opacity: 1;
+    top: 40%;
+}
+.img-content h3{
+    font-size: 3rem;
+    color: #fff;
+}
+.img-content a{
+    font-size: 1.2rem;
+}
+.img-container::after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.871);
+    opacity: 0;
+    z-index: 1;
+    transform: scaleY(0);
+    transform-origin: 100% 100%;
+    transition: all 0.3s ease-in-out;
+}
+.img-container:hover::after{
+    transform: scaley(1);
+    opacity: 1;
+}
+
+ </style> {% endblock %}
+{% block body %}
+<header class="slider-main">
+
+        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+            <ol class="carousel-indicators">
+               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+               <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+               <!-- Slide One - Set the background image for this slide in the line below -->
+               <div class="carousel-item active" style="background-image: url({% static 'images/f.jpg' %});">
+                  <div class="carousel-caption d-none d-md-block">
+                     <h3>Welcome to Leather World</h3>
+                     <p>A Perfect Place for Leather Accessories</p>
+                  </div>
+               </div>
+               <!-- Slide Two - Set the background image for this slide in the line below -->
+               <div class="carousel-item" style="background-image: url({% static 'images/m.jpg' %});">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h3>Welcome to Leather World</h3>
+                    <p>A Perfect Place for Leather Accessories</p>
+                  </div>
+               </div>
+               <!-- Slide Three - Set the background image for this slide in the line below -->
+               <div class="carousel-item" style="background-image: url({% static 'images/l.jpg' %});">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h3>Welcome to Leather World</h3>
+                    <p>A Perfect Place for Leather Accessories</p>
+                  </div>
+               </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+            </a>
+        </div>
+    </header>
+
+<!-- Page Content -->
+
+    <div class="container">
+    <div class="about-main">
+        <div class="row">
+           <div class="col-lg-6">
+              <h2>We Deals in ..</h2>
+        
+              <h5>Watches</h5>
+              <h5>Shoes</h5>
+              <h5>Belts</h5>
+              <h5>Ladeies $ Gents purse</h5>
+              <h5>Bags</h5>
+              <h5>Card Holders</h5>
+              <h5>Key chains</h5>
+              <h5>Gloves</h5>
+              <h5>Files</h5>
+
+              <ul>
+                 <li>We are manufacturers & exporters of leather accessories.</li>
+                 <li>We directly deal with our customers.</li>
+                 <li>There is no roal of wholesaler between our customers, as the product get shipped from factory Outlet.</li>
+                 <li>We only sell custom products here, which has minor defects and has not to be sell on official website.</li>
+                 <li>Product get delivered to you before five days.</li>
+              </ul>
+           </div>
+           <div class="col-lg-6">
+              <img class="img-fluid rounded" src="{%static 'images/sd.jpg'%}" alt="" />
+           </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- Portfolio Section -->
+    <div class="portfolio-main">
+        <h2>Our Services</h2>
+        <div class="food-container container">
+         <div class="food-type fruit">
+             <div class="img-container">
+                 <img src="{%static 'images/shoes.jpg'%}" alt="">
+                 <div class="img-content">
+                     <h3>Shoes</h3>
+                     <a href="https://en.wikipedia.org/wiki/Flowering_plant" target="_blank" class="btn btn-primary">shop</a>
+                 </div>
+             </div>
+         </div>
+         <div class="food-type vegetables">
+             <div class="img-container">
+                 <img src="{%static 'images/belts.jpg'%}" alt="">
+                 <div class="img-content">
+                     <h3>Belts</h3>
+                     <a href="https://en.wikipedia.org/wiki/Vegetable" class="btn btn-primary">shop</a>
+                 </div>
+             </div>
+         </div>
+         <div class="food-type grains">
+             <div class="img-container">
+                 <img src="{%static 'images/jacket.jpg'%}" alt="">
+                 <div class="img-content">
+                     <h3>Jackets</h3>
+                     <a href="/users/vscdeals/?catid={{row.2}}" class="btn btn-primary">shop</a>
+                 </div>
+             </div>
+         </div>
+     </div>
+     
+        <div class="food-container container my-4">
+         <div class="food-type fruit">
+             <div class="img-container">
+                 <img src="{%static 'images/bags.jpg'%}" alt="">
+                 <div class="img-content">
+                     <h3>Bags</h3>
+                     <a href="https://en.wikipedia.org/wiki/Flowering_plant" target="_blank" class="btn btn-primary">shop</a>
+                 </div>
+             </div>
+         </div>
+         <div class="food-type vegetables">
+             <div class="img-container">
+                 <img src="{%static 'images/watch.jpg'%}" alt="">
+                 <div class="img-content">
+                     <h3>watches</h3>
+                     <a href="https://en.wikipedia.org/wiki/Vegetable" class="btn btn-primary">shop</a>
+                 </div>
+             </div>
+         </div>
+         <div class="food-type grains">
+             <div class="img-container">
+                 <img src="{%static 'images/cardholder.jpg'%}" alt="">
+                 <div class="img-content">
+                     <h3>cardholders</h3>
+                     <a href="https://en.wikipedia.org/wiki/Grain" class="btn btn-primary">shop</a>
+                 </div>
+             </div>
+         </div>
+     </div>
+    </div>
+    
+    <!-- Get In Touch Now Section -->
+    <div class="row mb-4">
+        <div class="col-md-8">
+           <p style="display: inline;">By creating an account you will able to shop faster, be up to date on an order's status   . </p><span class="fa fa-hand-o-right" style="font-size:18px"></span>
+        </div>
+        <div class="col-md-4">
+           <a class="btn btn-lg btn-secondary btn-block" href="/register/">Get In Touch Now</a>
+        </div>
+    </div>
+</div> 
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{%extends 'base.html'%}
+{%block title%}Login {%endblock%}
+{% block body %}
+<div class="container mt-5" style="padding-top:60px;" >
+          <!--messeage pop up-->
+ {% if messages %}
+ {% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+   <strong>{{ message }}</strong>
+ <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+   <span aria-hidden="true">&times;</span>
+ </button>
+</div>
+ {%endfor%}
+ {% endif %}
+<!--messeage pop up-->
+
+  <h1 style="font-weight:bold;font-size:40px;">Login Here!!!</h1>
+<form method="POST" action="/login/">
+  {% csrf_token %}
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label mt-5">Username</label>
+      <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">We'll never share your details with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" name="chk" value="remember" for="exampleCheck1">Remember Me</label>
+    </div>
+
+    <!-- <font >{{output}}</font> -->
+    <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+    <button style="margin:0px 200px; padding:5px 300px;" type="submit" class="btn btn-outline-danger mb-2"><strong>Submit</strong></button>
+    
+
+  </form>
+</div>
+  {%endblock%}

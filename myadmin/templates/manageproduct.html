@@ -1,0 +1,106 @@
+{%extends 'adminhome.html'%}
+{%block title%}Manage Product {%endblock%}
+
+{% block css %}<style>
+.section{
+    padding-top: 100px;
+}
+a{
+    /* text-decoration: underline; */
+    font-size: large;
+    padding-right: 20px;
+    color: black;
+}
+a:hover{
+  color: red;
+}
+</style>
+{%endblock%}
+{%block body%}
+<script>
+  function fetchSubCategory(catid)
+  {
+    var xhttp=new XMLHttpRequest()
+    xhttp.open("GET","http://127.0.0.1:8000/myadmin/fetchSubCategory/?catid="+catid,true)
+    xhttp.send()
+
+    xhttp.onreadystatechange=function(){
+      if(xhttp.readyState==4 && xhttp.status==200)
+      {
+        document.getElementById("response").innerHTML=xhttp.responseText
+      }
+    }
+  }
+  </script>
+<div class="container" >
+  
+<div class="col-sm-12 section">
+  <!--messeage pop up-->
+ {% if messages %}
+ {% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+   <strong>{{ message }}</strong>
+ <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+   <span aria-hidden="true">&times;</span>
+ </button>
+</div>
+ {%endfor%}
+ {% endif %}
+<!--messeage pop up-->
+    <br>
+    <a class="btn btn-warning" href="/myadmin/manageproduct/">Add Product</a> 
+    <a class="btn btn-warning" href="/myadmin/viewproduct/">View Product</a> 
+    <h2>Add Product here</h2>
+    <font> {{output}}</font>
+    <form method="post" action="/myadmin/manageproduct/" enctype="multipart/form-data">
+        {% csrf_token %} 
+          <div class="mb-3">
+            <label  class="form-label mt-5">Product Title </label>
+            <input type="text" name="title" placeholder="Enter ProductTitle " class="form-control" aria-describedby="emailHelp">
+          </div>
+            
+          <div class="mb-3">
+            <label  class="form-label ">Category Name</label>
+            <select name="catid"  class="form-control" onchange="fetchSubCategory(this.value)">
+                <option>Select Category</option>
+                {% for row in clist%}
+                <option value="{{row.catid}}">{{row.catname}}</option>
+                {% endfor %}
+                </select>
+          </div> 
+          
+          <div class="mb-3">
+            <label  class="form-label ">Sub Category Name</label>
+            <select id="response" name="subcatid"  class="form-control" >
+                <option>Select Sub Category</option>
+                </select>
+                <!-- <div id="response" ></div> -->
+          </div>
+         
+
+                <div class="mb-3">
+                  <label  class="form-label">Product Description </label>
+                <textarea name="pdescription" placeholder="product description" class="form-control"  cols="3" rows="3"></textarea>
+              </div>
+
+                <div class="mb-3">
+                  <label  class="form-label">Product Base Price </label>
+                <textarea name="bprice" placeholder="Enter Product Base Price" class="form-control"  cols="2" rows="2"></textarea>
+              </div>
+
+                <div class="mb-3">
+                  <label  class="form-label">Product Icon  </label>
+                  <input type="file" value="" name="piconname" class="form-control" >
+              </div>
+              
+            
+              
+          
+
+          <button type="submit" class="btn btn-danger mb-2">Add Product</button>
+          
+      
+        </form>
+</div>
+</div>
+{%endblock%}

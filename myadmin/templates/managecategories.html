@@ -1,0 +1,57 @@
+{%extends 'adminhome.html'%}
+{%block title%}Manage Categories {%endblock%}
+{% block css %}<style>
+.section{
+    padding-top: 100px;
+}
+a{
+    font-size: large;
+    padding-right: 20px;
+    color: black;
+}
+a:hover{
+  color: red;
+  text-decoration: none;
+}
+</style>
+{%endblock%}
+{%block body%}
+<div class="container" >
+<div class="col-sm-12 " style="margin-top: 108px;">
+    <!--messeage pop up-->
+ {% if messages %}
+ {% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+   <strong >{{ message }}</strong>
+ <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+   <span aria-hidden="true">&times;</span>
+ </button>
+</div>
+ {%endfor%}
+ {% endif %}
+<!--messeage pop up-->
+    <br>
+    <a  class="btn btn-warning" href="/myadmin/addcategory/">Add Category</a> 
+    <a  class="btn btn-warning"href="/myadmin/managecategory/">Manage Category</a> 
+    <a  class="btn btn-warning"href="/myadmin/addsubcategory/">Add SubCategory</a>  
+    <a  class="btn btn-warning"href="/myadmin/managesubcategory/">Manage SubCategory</a>
+    <h2>Add Category here</h2>
+    <font> {{output}}</font>
+    <form method="post" action="/myadmin/managecategories/" enctype="multipart/form-data">
+        {% csrf_token %} 
+          <div class="mb-3">
+            <label  class="form-label mt-5">Category Name</label>
+            <input type="text" name="catname" placeholder="Enter Category Name" class="form-control" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label  class="form-label">Category Icon</label>
+            <input type="file" value="" name="caticon" class="form-control" >
+          </div>
+
+          <button type="submit" class="btn btn-danger mb-2">Add Category</button>
+          
+      
+        </form>
+</div>
+</div>
+{%endblock%}

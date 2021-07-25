@@ -1,0 +1,56 @@
+{%extends 'adminhome.html'%}
+{%block title%}View Product {%endblock%}
+
+{% block css %}<style>
+.section{
+    padding-top: 100px;
+}
+a{
+    /* text-decoration: underline; */
+    font-size: large;
+    padding-right: 20px;
+    color: black;
+}
+a:hover{
+  color: red;
+}
+</style>
+{%endblock%}
+{%block body%}
+<div class="container">
+    <h2 style="padding-top: 120px;">View and Manage Product</h2>
+    <h3> </h3>
+    
+ 
+    <div class="col-sm-12 ">
+ 
+       <!-- <h2 style="font-size:40px; color: red;">bidding History</h2> -->
+       <table class="table table-bordered">
+         <tr class="table-danger">
+             <th>Product-ID</th>
+             <th>Title</th>
+             <th>Product-description</th>
+             <th>Base Price</th>
+             <th>Product Icon</th>
+             <th>Info</th>
+             <th>Status</th>
+             <th>Action</th>
+       
+         </tr>
+         {%for row in plist%}
+         <tr>
+             <td>{{row.pid}}</td>
+             <td>{{row.title}}</td>
+             <td>{{row.pdescription}}</td>
+             <td>{{row.bprice}}</td>
+             <td><img src="{{media_url}}{{row.piconname}}" height="50" width="70" /></td>
+             <td>{{row.info}}</td>
+             <td>
+             
+         </tr>
+         {%endfor%}
+     </table>
+ 
+    </div>
+    </div>
+{%endblock%}

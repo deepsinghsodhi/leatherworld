@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+   <title>{%block title%}{%endblock%}</title>
+	<!-- Bootstrap core CSS -->
+	<link href="{%static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+	<!-- Fontawesome CSS -->
+	<link href="{%static 'css/all.css'%}" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="{%static 'css/style.css'%}" rel="stylesheet">
+   <link href="{% static 'images/sd.png' %}" rel="icon" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ {% block css%} {% endblock%}
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <div style="position:absolute; z-index:2; top: 0; left:0; width:100%; padding:20px 50px !important; background:rgba(0,0,0,0.5);">
+       <div class="row">
+ {%block header%}
+         <div class="col-sm-3">
+            <h3 id="logo" style="color">Leather World</h3>
+         </div>
+         <div class="col-sm-9">
+
+    <nav class="navbar navbar-expand-lg navbar-dark top-nav ">
+        <!-- <div class="container"> -->
+            <!-- <a class="navbar-brand" href="index.html">
+
+
+
+            </a> -->
+            <!-- <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="fas fa-bars"></span>
+            </button> -->
+            <div class="collapse navbar-collapse" id="navbarResponsive" style="padding-right: 189px;">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                     <a class="nav-link " href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="/about/">About</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="services.html">Services</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Portfolio
+                     </a>
+                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                        <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
+                        <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
+                        <a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
+                        <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
+                        <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
+                     </div>
+                  </li>
+                 
+                  <li class="nav-item">
+                     <a class="nav-link" href="/contact/">Contact</a>
+                  </li>
+                  <li><a class="login-bt  btn btn-outline-light btn-sm" href="/login/">Login</a></li>
+                  <li><a class="login-bt btn btn-outline-light btn-sm" href="/register/">Register</a></li>
+               </ul>
+               </div>
+            
+
+
+
+            <!-- </div> -->
+        <!-- </div> -->
+        <!-- </nav> -->
+
+    </nav>
+    {%endblock%}
+  
+ </div>
+
+           <!-- <div class="col-sm-2">
+            <ul class="top_button_section">
+               <li><a class="login-bt  btn btn-outline-light btn-sm" href="/login/">Login</a></li>
+               <li><a class="login-bt btn btn-outline-light btn-sm" href="/register/">Register</a></li>
+            </ul>
+               </div> -->
+    </div>
+    </div>
+    {% block body %}
+      
+    {% endblock %}
+    {% block js %} {% endblock %}
+    <!-- /.container -->
+    <!--footer starts from here-->
+    {%block footer%}
+    <footer class="footer mt-5">
+           
+		</div>
+        <div class="container">
+            <div class="footer-logo">
+				<h3 id="logo" class="logo" >Leather World</h3>
+			</div>
+            <!--foote_bottom_ul_amrc ends here-->
+            <p class="copyright text-center">All Rights Reserved. &copy; 2021 <a href="#">Leather World</a> Design By :
+               <a href="/">L W family</a>
+            </p>
+            <ul class="social_footer_ul">
+				<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+				<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+				<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+				<li><a href="https://www.instagram.com/sunnysodhii/"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+            <!--social_footer_ul ends here-->
+        </div>
+    </footer>
+    {%endblock%}
+	  
+<!-- Bootstrap core JavaScript -->
+<script src="{%static 'vendor/jquery/jquery.min.js'%}"></script>
+<script src="{%static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

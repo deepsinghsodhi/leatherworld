@@ -1,0 +1,242 @@
+{%extends 'base.html'%}
+{% load static %}
+{%block title%}About Us {%endblock%}
+{% block css %}<style>
+.full-title{
+	padding: 80px 0px ;
+	background: url({%static 'images/dfs.jpg'%}) no-repeat;
+	position: relative;
+}
+.full-title:before{
+	content: "";
+	background: rgba(0,0,0,0.5);
+	top: 0px;
+	left: 0px;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.full-title h1{
+	position: relative;
+	color: #ffffff;
+}
+.full-title h1 small{
+	float: right;
+	padding: 15px 0px;
+	font-size: 14px;
+}
+/* #####testimonial-title####### */
+#testimonial{
+    padding: 5rem 0rem;
+    background: rgb(243, 243, 243);
+}
+.testimonial-title{
+    text-align: center;
+    font-weight: 400;
+    font-size: 3rem;
+    color: #555;
+}
+.testimonial-container{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.6rem;
+    padding: 1rem;
+}
+.testimonial-container .checked{
+    color: #ff9529;
+}
+.testimonial-box .testimonial-text{
+    margin: 1rem 0rem;
+    color: #444;
+}
+.testimonial-box{
+    text-align: center;
+    padding: 1rem;
+}
+.customer-photo img{
+    display: block;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin: auto;
+    object-fit: cover;
+    object-position: center;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+	<!-- full Title -->
+	<div class="full-title">
+		<div class="container">
+			<!-- Page Heading/Breadcrumbs -->
+			<h1 class="mt-4 mb-3">About
+				<small></small>
+			</h1>
+		</div>
+	</div>
+    <!-- Page Content -->
+    <div class="container">
+		<div class="breadcrumb-main">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="index.html">Home</a>
+				</li>
+				<li class="breadcrumb-item active">About</li>
+			</ol>
+		</div>
+		<!-- About Content -->
+		<div class="about-main">
+			<div class="row">
+				<div class="col-lg-6">
+					<img class="img-fluid rounded mb-4" src="{%static 'images/u.jpg'%}" alt="" />
+				</div>
+				<div class="col-lg-6">
+					<h2>About Leather World</h2>
+
+					<p> <li>We are manufacturers & exporters of leather accessories.</li><br>
+						<li>We directly deal with our customers.</li> <br>
+						<li>There is no roal of wholesaler between our customers, as the product get    shipped from factory Outlet.</li> <br>
+						<li>We only sell custom products here, which has minor defects and has not to be sell on official website.</li> <br>
+						<li>Product get delivered to you before five days.</li></p>
+
+				</div>
+			</div>
+			<!-- /.row -->
+		</div>
+
+		<!-- Team Members -->
+		<div class="team-members-box">
+			<h2>Our Team</h2>
+			<div class="row">
+				<div class="col-lg-4 mb-4">
+				  <div class="card h-100 text-center">
+					<img class="card-img-top" src="{%static 'images/team_01.jpg'%}" alt="" />
+					<div class="card-body">
+						<h4 class="card-title">John Smith</h4>
+						<h6 class="card-subtitle mb-2 text-muted">Position</h6>
+						<p class="card-text"></p>
+					</div>
+					<div class="card-footer">
+						<ul>
+							<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+						</ul>
+					</div>
+				  </div>
+				</div>
+				<div class="col-lg-4 mb-4">
+				  <div class="card h-100 text-center">
+					<img class="card-img-top" src="{%static 'images/v1.jpg'%}" alt="" />
+					<div class="card-body">
+						<h4 class="card-title">Deep Singh Sodhi</h4>
+						<h6 class="card-subtitle mb-2 text-muted">Position</h6>
+						<p class="card-text">.</p>
+					</div>
+					<div class="card-footer">
+						<ul>
+							<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+						</ul>
+					</div>
+				  </div>
+				</div>
+				<div class="col-lg-4 mb-4">
+					<div class="card h-100 text-center">
+					  <img class="card-img-top" src="{%static 'images/team_03.jpg'%}" alt="" />
+					  <div class="card-body">
+						  <h4 class="card-title">Sophia Greek</h4>
+						  <h6 class="card-subtitle mb-2 text-muted">Position</h6>
+						  <p class="card-text"></p>
+					  </div>
+					  <div class="card-footer">
+						  <ul>
+							  <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+							  <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+							  <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+						  </ul>
+					  </div>
+					</div>
+				  </div>
+			<!-- /.row -->
+		</div>
+		<!-- Our Customers -->
+		<div class="customers-box">
+			<h2>Our Customers</h2>
+			<section id="testimonial">
+				<h2 class="testimonial-title">Whats our customers says</h2>
+				<div class="testimonial-container container">
+					<div class="testimonial-box">
+						<div class="star-rating">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+						</div>
+						<p class="testimonial-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum debitis voluptatum quas quam facere ipsum.</p>
+						<div class="customer-detail">
+							<div class="customer-photo"><img src="{%static '/images/male-photo1.jpg'%}" alt=""></div>
+							<p class="customer-name">Oscar</p>                    
+						</div>
+					</div>
+					<div class="testimonial-box">
+						<div class="star-rating">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+						</div>
+						<p class="testimonial-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum debitis voluptatum quas quam facere ipsum.</p>
+						<div class="customer-detail">
+							<div class="customer-photo"><img src="{%static '/images/male-photo2.jpg'%}" alt=""></div>
+							<p class="customer-name">Harry</p>                    
+						</div>
+					</div>
+					<div class="testimonial-box">
+						<div class="star-rating">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+						</div>
+						<p class="testimonial-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum debitis voluptatum quas quam facere ipsum.</p>
+						<div class="customer-detail">
+							<div class="customer-photo"><img src="{%static '/images/male-photo3.jpg'%}" alt=""></div>
+							<p class="customer-name">George</p>                    
+						</div>
+					</div>
+				</div>
+		</div>
+		<!-- /.container -->
+	</div>
+{%endblock%}
+{%block footer%}
+<footer class="footer">
+	<div class="container bottom_border">
+
+	<div class="container">
+		<div class="footer-logo">
+			<h3 id="logo" class="logo" >Leather World</h3>
+		</div>
+		<!--foote_bottom_ul_amrc ends here-->
+		<p class="copyright text-center">All Rights Reserved. &copy; 2021 <a href="#">Leather World</a> Design By :
+			<a href="https://html.design/">L W family</a>
+		</p>
+		<ul class="social_footer_ul">
+			<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+			<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+			<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+			<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+		</ul>
+		<!--social_footer_ul ends here-->
+	</div>
+</footer>
+{%endblock%}

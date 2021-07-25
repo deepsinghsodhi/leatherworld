@@ -1,0 +1,115 @@
+{%extends 'base.html'%}
+{% load static %}
+ {%block header%}
+         <div class="col-sm-3" >
+            <h3 id="logo" class="logo" >Leather world </h3>
+         </div>
+         <div class="col-sm-7" >
+
+    <nav class="navbar navbar-expand-lg navbar-dark top-nav">
+        <!-- <div class="container"> -->
+            <a class="navbar-brand" href="index.html">
+
+<!--                <img src="{%static 'images/45.jpg'%}" alt="logo" class="ml-5 mt-0">-->
+
+            </a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="fas fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                     <a class="nav-link " href="/myadmin/">Admin Home</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="/myadmin/manageusers/">ManageUsers</a>
+                  </li>
+                    <li class="nav-item">
+                     <a class="nav-link" href="/myadmin/managecategories/">Manage Categories</a>
+                  </li>
+                    <li class="nav-item">
+                     <a class="nav-link" href="/myadmin/manageproduct/">Manage Product</a>
+                  </li>
+                
+                    <li class="nav-item">
+                     <a class="nav-link" href="/login/">Logout</a>
+                  </li>
+
+
+
+               </div>
+            {%endblock%}
+{% block css %}
+   <style>
+
+@keyframes typing { 
+  from {
+     width : 0 
+     } 
+     } 
+  @keyframes blink {
+   50% {
+     border-color :
+      transparent 
+      } 
+    }
+
+    -wrapper {
+       height : 100vh;
+      display : flex; 
+      align-items:center;
+      Justify-content: center;
+    }
+    .typing-demo{
+      width : 39ch;
+      animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+      white-space: nowrap;
+      overflow: hidden; 
+      border-right: 3px solid;
+      font-family: monospace;
+      font-size: 2em;
+    }
+        </style>
+        {%endblock%}
+{% block body %}
+
+	
+        <div class="container"  >
+        <div class="col-sm-12">
+            <div><h3 style="padding-top: 120px;">Admin Panel</h3><br>
+            <!-- <h4>Welcome to Leather world's  Admin Panel</h4> -->
+            <div class = " wrapper"> 
+               <div class = " typing-demo " >
+                  Welcome to Leather world's  Admin Panel
+                  </div > 
+             </div>
+            <img src="{%static 'images/ef.png'%}" alt="">   
+         </div>
+         </div>
+        </div>
+        </div>
+
+
+{%endblock%}
+         {%block footer%}
+    <footer class="footer">
+        <div class="container bottom_border">
+
+        <div class="container">
+            <div class="footer-logo">
+				<h3 id="logo" class="logo" >Leather World</h3>
+			</div>
+            <!--foote_bottom_ul_amrc ends here-->
+            <p class="copyright text-center">All Rights Reserved. &copy; 2021 <a href="#">Leather World</a> Design By :
+			<a href="https://html.design/">l&W family</a>
+		</p>
+            <ul class="social_footer_ul">
+				<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+				<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+				<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+				<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+            <!--social_footer_ul ends here-->
+        </div>
+    </footer>
+    {%endblock%}

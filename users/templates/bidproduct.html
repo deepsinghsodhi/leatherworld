@@ -1,0 +1,83 @@
+{%extends 'userhome.html'%}
+{%load static%}
+
+{% block css %}<style>
+</style>
+{%endblock%}
+{%block header%}
+<div class="col-sm-3">
+   <h3 id="logo" class="logo" >Leather World</h3>
+</div>
+<div class="col-sm-7">
+
+<nav class="navbar navbar-expand-lg navbar-dark top-nav">
+<!-- <div class="container"> -->
+   <a class="navbar-brand" href="index.html">
+
+<!--                <img src="{%static 'images/45.jpg'%}" alt="logo" class="ml-5 mt-0">-->
+
+   </a>
+   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="fas fa-bars"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarResponsive" style="padding-right: 189px;">
+      <font style="color:white">Username:{{suname}}</font> 
+      <ul class="navbar-nav ml-auto">
+         <li class="nav-item">
+            <a class="nav-link " href="/users/">User Home</a>
+         </li>
+            <a class="nav-link" href="/users/vdeals/">Shop</a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" href="/login/">Logout</a>
+         </li>
+      </div>
+   </nav>
+   {%endblock%}
+
+      
+   {% block body %}
+   <div class="container">
+   <h1 style="padding-top: 120px;">View deals</h1>
+   <h3> </h3>
+   
+
+   <div class="col-sm-12">
+   {%if bstatus %}
+      <h2  style="font-size:40px; color:red;">SALE is live now</h2>
+      <a href="" style="color:salmon"> view Product</a>
+   
+   <form method="POST" action="/users/bidproduct/">
+      {% csrf_token %}
+        <div class="mb-3">
+          <label class="form-label mt-5">ProductID</label>
+          <input type="text" name="pid" class="form-control" readonly value="{{pdetails.pid}}">
+          <input type="hidden" name="uid" class="form-control" readonly value="{{suname}}">
+          
+        <div class="mb-3">
+          <label class="form-label">Base Price</label>
+          <input type="text" name="bprice" readonly class="form-control"  value="{{pdetails.bprice}}">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Current bidding Price</label>
+          <input type="text" name="cbprice" readonly class="form-control" value="{{cbprice}}">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Your bidding Price</label>
+          <input type="text" name="bidprice"  class="form-control"  placeholder="Enter Your bidding price" value="">
+        </div>
+      
+    
+        <!-- <font >{{output}}</font> -->
+        <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+        <button style="margin:0px 290px; padding:5px 300px;" type="submit" class="btn btn-outline-danger mb-2"><strong>Bid Product</strong></button>
+        
+    
+      </form>
+      {%else%}
+      <h2 style="font-size:40px; color: red;">Sale Ends</h2>
+      <a href="/users/bidresult/?pid={{pdetails.pid}}" style="color:blue;font-size:34px; ">view details</a>
+   {% endif %}
+   </div>
+</div>
+{%endblock%}

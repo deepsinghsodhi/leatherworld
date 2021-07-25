@@ -1,0 +1,29 @@
+{%extends 'userhome.html'%}
+{%load static%}
+{%block title%}{{product.title}}-sunny{%endblock%}
+
+{% block css %}
+{%endblock%}
+
+{%block body%}
+<div class="container" style="padding-top: 120px;">
+    <div class="row">
+    <div class="col-md-4">
+        <div class="row">
+            <img src="{{media_url}}{{product.0.piconname}}" width="283px" height="400px" alt="">
+    </div>
+    <div class="row my-4">
+        <button class="btn btn-danger mx-4">Buy Now</button>
+        <button class="btn btn-danger">Add to Cart</button>
+    </div>
+    </div>
+
+    <div class="col-md-8 my-4">
+        <h5>{{product.0.title}}</h5>
+        <h5><b>MRP Rs: {{product.0.bprice}}</b></h5>
+        <p>{{product.0.pdescription}}</p>
+    </div>
+</div>
+</div>
+
+{%endblock%}

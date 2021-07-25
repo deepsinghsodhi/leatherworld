@@ -1,0 +1,236 @@
+{%extends 'userhome.html'%}
+{%load static%}
+
+{% block css %}
+<style>
+          .col-md-3
+          {
+          display: inline-block;
+          margin-left:-4px;
+          }
+
+          .carousel-indicators .active {
+          background-color: blue;
+            }
+
+          .col-md-3 img{
+
+          width: 227px;
+          height: 249px;
+          }
+
+          body .carousel-indicator li{
+          background-color: blue;
+          }
+
+          body .carousel-indicators{
+          bottom: 0;
+          }
+
+          body .carousel-control-prev-icon,
+          body .carousel-control-next-icon{
+          background-color: blue;
+          }
+
+          .carousel-control-prev,
+          .carousel-control-next{
+          top: auto;
+bottom: auto;
+          }
+           body .no-padding{
+           padding-left: 0;
+           padding-right: 0;
+           }
+            .carousel-control-prev,
+           .carousel-control-next{
+            /* position: absolute; */
+            top: 400px;
+           }/*
+           .carousel-indicators{
+            position: absolute;
+            top: 350px;
+           } */
+
+           </style>
+ {% endblock %}
+ {%block header%}
+
+ <div class="col-sm-3 section">
+    <h3 id="logo" class="logo" >Leather World</h3>
+ </div>
+ <div class="col-sm-7">
+
+<nav class="navbar navbar-expand-lg navbar-dark top-nav">
+<!-- <div class="container"> -->
+    <a class="navbar-brand" href="index.html">
+
+
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive" style="padding-right: 189px;">
+       <font style="color:white">Username:{{suname}}</font> 
+       <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+             <a class="nav-link " href="/users/">User Home</a>
+          </li>
+          <li class="nav-item">
+             <a class="nav-link" href="/users/vdeals/">Shop</a>
+          </li>
+          <li class="nav-item">
+             <a class="nav-link" href="/login/">Logout</a>
+          </li>
+          
+          <button type="button" class="btn btn-secondary mx-2" id="popcart" data-container="body" data-toggle="popover" data-html="true" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+            Cart (<span id="cart">0</span>)
+            </button> 
+       </ul>
+       </div>
+{%endblock%}
+{% block body %}
+<div class="container">
+   <h1 style="padding-top: 120px;">Jackets </h1>
+    <!--Slideshow starts here -->
+    {% for product, range, nSlides in allProds %}
+    <h5 class="my-4">Flash Sale On {{scname.subcatname}} - Recommended Items</h5>
+    <div class="row">
+<div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+
+       {% for i in range %}
+      <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}" ></li>
+      {% endfor %}
+    </ul>
+
+
+    <div class="container carousel-inner no-padding">
+       
+      <div class="carousel-item active">
+      
+        {% for i in product %}
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="align-items-center card" style="width: 18rem;">
+            <img src='{{media_url}}{{i.piconname}}' class="card-img-top" alt="...">
+            
+            <div class="card-body">
+              <h5 class="card-title">{{i.title}}</h5>
+                <!-- {{ptime.0.info}} -->
+                {% for t in plist %}
+                  <h6>{{t.info}}-</h6>
+                  <h6>{{t.id}}</h6>
+                  {% endfor %}
+                  {%if bstatus %}
+                  {{bstatus}}
+                  <h2  style="font-size:18px; color:red;">SALE is live now</h2>
+              {%else%}
+              {{bstatus}}
+
+              <h2 style="font-size:40px; color: red;">Sale Ends</h2>
+           {% endif %}
+              <p class="card-text">{{i.pdescription|slice:"0:53"}}...</p>
+
+                <span id="divpr{{i.pid}}" class="divpr">
+              <button id="pr{{i.pid}}" class="cart btn btn-primary">Add to Cart</button>
+            </span>
+              <a href="/users/products/{{i.pid}}"><button id="qv{{i.pid}}" class="cart btn btn-primary">Quick View</button></a>
+            </div>
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+      </div><div class="carousel-item">
+        {% endif %}
+
+        {% endfor %}
+    </div>
+
+       
+
+</div>
+</div>
+    <!-- left and right controls for the slide -->
+    <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+   </div>
+    {% endfor %}
+</div>
+ {% endblock %}
+{%block js%}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+  
+  console.log("working");
+ //find out the cart items from localstorage
+  if(localStorage.getItem('cart')==null){
+    var cart={};
+  }
+  else{
+    cart=JSON.parse(localStorage.getItem('cart'));  
+    document.getElementById('cart').innerHTML= Object.keys(cart).length;  
+    updateCart(cart);  
+  }
+  $(function(){
+
+  //if add to cart button is clicked, add increment the item
+  jQuery('.cart').click(function(){
+    var idstr= this.id.toString();
+    if(cart[idstr] !=undefined){
+      cart[idstr] =cart[idstr]+1;
+    }
+    else{
+      cart[idstr] =1;
+    }
+    updateCart(cart);  
+
+  });
+  //Add popover to cart
+  $('#popcart').popover();
+document.getElementById("popcart").setAttribute('data-content', '<h5>Cart for your items in my shopping cart</h5>');
+});
+updatePopover(cart);
+function updatePopover(cart)
+{
+  
+    var popStr = "";
+    popStr = popStr + "<h5> Cart for your items in my shopping cart </h5><div class='row mx-2 my-2'">;
+    var i = 1;
+    for (var item in cart){
+        popStr = popStr + "<b>" + i + "</b>. ";
+        popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 19) + "... Qty: " + cart[item] + '<br>';
+        i = i+1;
+    }
+    popStr = popStr + "</div>" 
+    console.log(popStr);
+    document.getElementById('popcart').setAttribute('data-content', popStr);
+    $('#popcart').popover('show');
+}     
+
+function updateCart(cart) {
+  console.log(cart);
+    for (var item in cart) {
+        document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-primary minus'>-</button> <span id='val" + item + "''>" + cart[item] + "</span> <button id='plus" + item + "' class='btn btn-primary plus'> + </button>";
+    }
+    localStorage.setItem('cart',JSON.stringify(cart));
+    document.getElementById('cart').innerHTML= Object.keys(cart).length;
+    console.log(cart);
+}
+$('.divpr').on("click", "button.minus", function() {
+    a = this.id.slice(7, );
+    cart['pr' + a] = cart['pr' + a] - 1;
+    cart['pr' + a] = Math.max(0, cart['pr' + a]);
+    document.getElementById('valpr' + a).innerHTML = cart['pr' + a];
+    updateCart(cart);
+});
+$('.divpr').on("click", "button.plus", function() {
+    a = this.id.slice(6, );
+    cart['pr' + a] = cart['pr' + a] + 1;
+    document.getElementById('valpr' + a).innerHTML = cart['pr' + a];
+    updateCart(cart);
+});
+</script>
+{%endblock%}
